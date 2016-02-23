@@ -74,6 +74,9 @@
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}{% if settings.home_section_1 == 'slider' and template == 'index' %}attached-slider {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
 
   <header class="site-header" role="banner">
+      <nav class="wrapper nav-bar" role="navigation">
+        {% include 'site-nav' %}
+      </nav>
       <div class="wrapper">
         <div class="grid--full">
           <div class="mobile-nav--sticky">
@@ -118,30 +121,6 @@
               {% endif %}
             {% endif %}
           </div>
-          <div class="grid-item large--one-half medium--one-half header-logo-wrapper">
-            {% comment %}
-              Use the uploaded logo from theme settings if enabled.
-              Site name gets precedence with H1 tag on homepage, div on other pages.
-            {% endcomment %}
-
-            {% if template == 'index' %}
-              <h1 class="header-logo" itemscope itemtype="http://schema.org/Organization">
-            {% else %}
-              <div class="h1 header-logo" itemscope itemtype="http://schema.org/Organization">
-            {% endif %}
-              {% if settings.logo_use_image %}
-                <a href="/" itemprop="url">
-                  <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo">
-                </a>
-              {% else %}
-                <a href="/" itemprop="url">{{ shop.name }}</a>
-              {% endif %}
-            {% if template == 'index' %}
-              </h1>
-            {% else %}
-              </div>
-            {% endif %}
-          </div>
           <div class="grid-item one-quarter small--hide header-cart-wrapper">
             {% comment %}
               Show number of items in the cart and total cost in the /cart link
@@ -165,11 +144,6 @@
         </div>
       </div>
   </header>
-  <hr class="visible--small hr--header">
-
-  <nav class="wrapper nav-bar" role="navigation">
-    {% include 'site-nav' %}
-  </nav>
 
   <main class="wrapper main-content" role="main">
 
