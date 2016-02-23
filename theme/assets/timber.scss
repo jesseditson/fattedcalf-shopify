@@ -179,11 +179,11 @@ $accentFontSize: 13px;
 // Icons
 @font-face {
   font-family: 'icons';
-  src: url('//cdn.shopify.com/s/files/1/1177/6116/t/2/assets/icons.eot?3643379065020796921');
-  src: url('//cdn.shopify.com/s/files/1/1177/6116/t/2/assets/icons.eot?3643379065020796921#iefix') format("embedded-opentype"),
-       url('//cdn.shopify.com/s/files/1/1177/6116/t/2/assets/icons.woff?3643379065020796921') format("woff"),
-       url('//cdn.shopify.com/s/files/1/1177/6116/t/2/assets/icons.ttf?3643379065020796921') format("truetype"),
-       url('//cdn.shopify.com/s/files/1/1177/6116/t/2/assets/icons.svg?3643379065020796921#timber-icons') format("svg");
+  src: url('//cdn.shopify.com/s/files/1/1177/6072/t/2/assets/icons.eot?4674287571941454162');
+  src: url('//cdn.shopify.com/s/files/1/1177/6072/t/2/assets/icons.eot?4674287571941454162#iefix') format("embedded-opentype"),
+       url('//cdn.shopify.com/s/files/1/1177/6072/t/2/assets/icons.woff?4674287571941454162') format("woff"),
+       url('//cdn.shopify.com/s/files/1/1177/6072/t/2/assets/icons.ttf?4674287571941454162') format("truetype"),
+       url('//cdn.shopify.com/s/files/1/1177/6072/t/2/assets/icons.svg?4674287571941454162#timber-icons') format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -1564,7 +1564,7 @@ select {
           appearance: none;
   background-position: right center;
   background: {
-    image: url(//cdn.shopify.com/s/files/1/1177/6116/t/2/assets/ico-select.svg?3643379065020796921);
+    image: url(//cdn.shopify.com/s/files/1/1177/6072/t/2/assets/ico-select.svg?4674287571941454162);
     repeat: no-repeat;
     position: right 10px center;
     color: transparent;
@@ -2150,7 +2150,7 @@ $shareBorderColor: $colorBorder;
 .header-logo {
   text-align: center;
   margin: 0 auto ($gutter / 2);
-  max-width: 300px;
+  max-width: 147px;
 
   @include at-query ($min, $large) {
     margin-bottom: 0;
@@ -3807,7 +3807,7 @@ $shareBorderColor: $colorBorder;
   text-align: center;
 
   @if $passwordPageUseBgImage {
-    background-image: url(//cdn.shopify.com/s/files/1/1177/6116/t/2/assets/password-page-background.jpg?3643379065020796921);
+    background-image: url(//cdn.shopify.com/s/files/1/1177/6072/t/2/assets/password-page-background.jpg?4674287571941454162);
     background-size: cover;
     background-color: #333;
     background-repeat: no-repeat;
@@ -3824,7 +3824,7 @@ $shareBorderColor: $colorBorder;
   width: 100%;
 
   @if $passwordPageUseBgImage {
-    background-image: url(//cdn.shopify.com/s/files/1/1177/6116/t/2/assets/password-page-background.jpg?3643379065020796921);
+    background-image: url(//cdn.shopify.com/s/files/1/1177/6072/t/2/assets/password-page-background.jpg?4674287571941454162);
     background-size: cover;
     background-repeat: no-repeat;
     color: #ffffff;
