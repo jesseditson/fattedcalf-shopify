@@ -268,7 +268,7 @@ timber.alignMenu = function () {
   var $nav = timber.cache.$navigation,
       w = 0,
       i = 0,
-      wrapperWidth = $nav.outerWidth() - 101,
+      wrapperWidth = $nav.outerWidth(),
       menuhtml = '';
 
   if (window.bpSmall) {
@@ -294,15 +294,15 @@ timber.alignMenu = function () {
     }
   });
 
-  if (wrapperWidth < w) {
-    $nav.append(
-      '<li class="js-more-menu site-nav--has-dropdown">'
-        + '<a href="#">' + "More" + '<span class="icon icon-arrow-down" aria-hidden="true"></span></a>'
-        + '<ul class="js-more-menu--list site-nav--dropdown">' + menuhtml + '</ul></li>'
-    );
-
-    timber.cache.$hasDropdownItem = $('.site-nav--has-dropdown');
-  }
+  // if (wrapperWidth < w) {
+  //   $nav.append(
+  //     '<li class="js-more-menu site-nav--has-dropdown">'
+  //       + '<a href="#">' + "More" + '<span class="icon icon-arrow-down" aria-hidden="true"></span></a>'
+  //       + '<ul class="js-more-menu--list site-nav--dropdown">' + menuhtml + '</ul></li>'
+  //   );
+  //
+  //   timber.cache.$hasDropdownItem = $('.site-nav--has-dropdown');
+  // }
 };
 
 timber.toggleMenu = function () {
@@ -360,7 +360,7 @@ timber.productPage = function (options) {
       $addToCartText.text(timber.strings.addToCart);
 
       // Show how many items are left, if below 10
-      
+
       if (variant.inventory_management) {
         if (variant.inventory_quantity < 10 && variant.inventory_quantity > 0) {
           $variantQuantity.html("Only 1 left".replace('1', variant.inventory_quantity));
@@ -372,7 +372,7 @@ timber.productPage = function (options) {
         //hide low stock warning if inventory isn't being tracked on this product
         $lowStock.hide();
       }
-      
+
 
     } else {
       // Sold out, disable the submit button, change text, hide quantity elements
@@ -485,9 +485,9 @@ timber.homepageSlider = function (options) {
         items: 1,
         loop: true,
         smartSpeed: 750,
-        
+
           animateOut: 'fadeOut',
-        
+
         autoplayTimeout: 5000,
         autoplay: true,
         dots: true,
@@ -664,7 +664,7 @@ timber.updateFilterLabel = function (evt, element) {
 };
 
 timber.socialSharing = function () {
-  
+
 
   // General selectors
   var $buttons = timber.cache.$shareButtons,
@@ -763,7 +763,7 @@ timber.equalHeights = function () {
   if (timber.cache.$carousel) {
     timber.carouselEqualHeights();
   }
-  
+
   var $gridImageArray = [];
   var gridContainerLength = timber.cache.$gridContainer.length;
 
@@ -777,9 +777,9 @@ timber.equalHeights = function () {
 };
 
 timber.cartPage = function () {
-  
+
     return;
-  
+
 
   timber.cache.$body.on('click', timber.cache.cartNoteAdd, function (evt) {
     evt.preventDefault();

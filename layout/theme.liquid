@@ -46,9 +46,6 @@
   <!-- Header hook for plugins ================================================== -->
   {{ content_for_header }}
 
-  <!-- application.css is recompiled and uploaded anytime you change ANY .scss file in your project. -->
-  {{ 'application.css' | asset_url | stylesheet_tag }}
-
   {% include 'oldIE-js' %}
 
   {% comment %}
@@ -77,73 +74,71 @@
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}{% if settings.home_section_1 == 'slider' and template == 'index' %}attached-slider {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
 
   <header class="site-header" role="banner">
-      <nav class="wrapper nav-bar" role="navigation">
+      <nav class="nav-bar" role="navigation">
         {% include 'site-nav' %}
       </nav>
-      <div class="wrapper">
-        <div class="grid--full">
-          <div class="mobile-nav--sticky">
-            <div class="grid-item medium--hide large--hide one-half mobile-nav__item">
-              <div id="mobileNavBar">
-                <button class="menu-toggle btn-link mobile-nav-bar__link">
-                  <span class="icon-fallback-text">
-                    <span class="icon icon-menu" aria-hidden="true"></span>
-                  </span>
-                  {{ 'layout.navigation.menu' | t }}
-                </button>
-              </div>
-            </div>
-            <div class="grid-item medium--hide large--hide one-half text-right mobile-nav__item">
-              <a href="/cart" class="cart-toggle mobile-nav-bar__link">
-                {{ 'layout.cart.title' | t }}
-                <span class="cart-icon-wrapper">
-                  <span class="icon-fallback-text">
-                    <span class="icon icon-cart" aria-hidden="true"></span>
-                  </span>
-                  <span class="cart-count{% if cart.item_count == 0 %} hidden-count{% endif %}">{{ cart.item_count }}</span>
+      <div class="grid--full">
+        <div class="mobile-nav--sticky">
+          <div class="grid-item medium--hide large--hide one-half mobile-nav__item">
+            <div id="mobileNavBar">
+              <button class="menu-toggle btn-link mobile-nav-bar__link">
+                <span class="icon-fallback-text">
+                  <span class="icon icon-menu" aria-hidden="true"></span>
                 </span>
-              </a>
+                {{ 'layout.navigation.menu' | t }}
+              </button>
             </div>
           </div>
-          <div class="grid-item one-quarter small--hide header-login-wrapper">
-            {% if shop.customer_accounts_enabled %}
-              {% if customer %}
-                <a href="/account">
-                  {{ customer.first_name }}
-                  <span class="icon-fallback-text">
-                    <span class="icon icon-user" aria-hidden="true"></span>
-                  </span>
-                </a>
-              {% else %}
-                <a href="/account/login">
-                  {{ 'customer.login.sign_in' | t }}
-                  <span class="icon-fallback-text">
-                    <span class="icon icon-user" aria-hidden="true"></span>
-                  </span>
-                </a>
-              {% endif %}
-            {% endif %}
-          </div>
-          <div class="grid-item one-quarter small--hide header-cart-wrapper">
-            {% comment %}
-              Show number of items in the cart and total cost in the /cart link
-
-              Ajaxify Cart Notes:
-                - #cartToggle toggles cart visibility (drawer or modal)
-                - #cartCount updates the total number of items in the cart
-                - #cartCost updates the total cost of the cart
-                - Documentation:  https://shopify.github.io/Timber/#ajax-cart
-            {% endcomment %}
-            <a href="/cart" class="cart-toggle" id="cartToggle">
+          <div class="grid-item medium--hide large--hide one-half text-right mobile-nav__item">
+            <a href="/cart" class="cart-toggle mobile-nav-bar__link">
+              {{ 'layout.cart.title' | t }}
               <span class="cart-icon-wrapper">
                 <span class="icon-fallback-text">
                   <span class="icon icon-cart" aria-hidden="true"></span>
                 </span>
                 <span class="cart-count{% if cart.item_count == 0 %} hidden-count{% endif %}">{{ cart.item_count }}</span>
               </span>
-              {{ 'layout.cart.title' | t }}
             </a>
           </div>
+        </div>
+        <div class="grid-item one-quarter small--hide header-login-wrapper">
+          {% if shop.customer_accounts_enabled %}
+            {% if customer %}
+              <a href="/account">
+                {{ customer.first_name }}
+                <span class="icon-fallback-text">
+                  <span class="icon icon-user" aria-hidden="true"></span>
+                </span>
+              </a>
+            {% else %}
+              <a href="/account/login">
+                {{ 'customer.login.sign_in' | t }}
+                <span class="icon-fallback-text">
+                  <span class="icon icon-user" aria-hidden="true"></span>
+                </span>
+              </a>
+            {% endif %}
+          {% endif %}
+        </div>
+        <div class="grid-item one-quarter small--hide header-cart-wrapper">
+          {% comment %}
+            Show number of items in the cart and total cost in the /cart link
+
+            Ajaxify Cart Notes:
+              - #cartToggle toggles cart visibility (drawer or modal)
+              - #cartCount updates the total number of items in the cart
+              - #cartCost updates the total cost of the cart
+              - Documentation:  https://shopify.github.io/Timber/#ajax-cart
+          {% endcomment %}
+          <a href="/cart" class="cart-toggle" id="cartToggle">
+            <span class="cart-icon-wrapper">
+              <span class="icon-fallback-text">
+                <span class="icon icon-cart" aria-hidden="true"></span>
+              </span>
+              <span class="cart-count{% if cart.item_count == 0 %} hidden-count{% endif %}">{{ cart.item_count }}</span>
+            </span>
+            {{ 'layout.cart.title' | t }}
+          </a>
         </div>
       </div>
   </header>

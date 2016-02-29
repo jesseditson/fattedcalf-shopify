@@ -1,15 +1,15 @@
 [
   {
     "name": "theme_info",
-    "logo": "https:\/\/cdn.shopify.com\/s\/global\/branding\/shopify_logo_256x256.png",
+    "logo": "https:\/\/cdn.shopify.com\/s\/files\/1\/1177\/6072\/t\/2\/assets\/logo.png?1334716146544112989",
     "settings": [
       {
         "type": "header",
-        "content": "Solo theme"
+        "content": "Fatted Calf"
       },
       {
         "type": "paragraph",
-        "content": "This theme is fully supported by Shopify. [Contact our support team](mailto:themesupport@shopify.com) if you have any questions about this theme."
+        "content": "This theme was created for Fatted Calf by Jesse Ditson (jesse.ditson@gmail.com)"
       }
     ]
   },

@@ -23,11 +23,17 @@
           {% endfor %}
         </ul>
       </li>
-      {% comment %}
-      Add logo to the middle of the items
-      {% endcomment %}
-      {% if link.handle == 'meaty-goods' %}
-      <div class="grid-item header-logo-wrapper">
+    {% else %}
+      <li class="{% if link.active %}site-nav--active{% endif %} {{ link.handle }}">
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      </li>
+    {% endif %}
+    {% comment %}
+    Add logo to the middle of the items
+    {% endcomment %}
+    {% if link.handle == 'meaty-goods' %}
+    <li class="logo">
+      <div class="header-logo-wrapper">
         {% comment %}
           Use the uploaded logo from theme settings if enabled.
           Site name gets precedence with H1 tag on homepage, div on other pages.
@@ -50,11 +56,7 @@
           </div>
         {% endif %}
       </div>
-      {% endif %}
-    {% else %}
-      <li {% if link.active %}class="site-nav--active"{% endif %}>
-        <a href="{{ link.url }}">{{ link.title }}</a>
-      </li>
+    </li>
     {% endif %}
   {% endfor %}
 

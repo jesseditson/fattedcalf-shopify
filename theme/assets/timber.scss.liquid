@@ -2138,7 +2138,7 @@ $shareBorderColor: $colorBorder;
   #Site Header
 ==============================================================================*/
 .site-header {
-  padding: ($gutter / 2) 0;
+  padding: 0;
   color: $colorHeading;
 
   a,
@@ -2173,7 +2173,6 @@ $shareBorderColor: $colorBorder;
 
 .header-logo {
   text-align: center;
-  margin: 0 auto ($gutter / 2);
   max-width: {{ settings.logo_max_width }}px;
 
   @include at-query ($min, $large) {
@@ -2250,7 +2249,7 @@ $shareBorderColor: $colorBorder;
 /*================ Small-Up Site Header ================*/
 @include at-query ($min, $small) {
   .site-header {
-    padding: $gutter 0;
+    padding: 0;
 
     .grid {
       display: table;
@@ -2487,7 +2486,6 @@ $shareBorderColor: $colorBorder;
   .site-nav {
     text-align: center;
     white-space: nowrap;
-    margin-left: -$gutter / 2;
 
     & > li {
       position: relative;
