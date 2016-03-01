@@ -1,12 +1,3 @@
-
-// var arrows = $('<div class="hero__arrows small--hide" aria-controls="Hero">')
-// arrows.append('<a href="#" class="hero__arrow hero__arrow--prev">')
-//   .append({% include 'icon-arrow-left' %})
-//   .append('<span class="icon__fallback-text">{{ 'homepage.hero.previous_slide' | t }}</span>')
-// arrows.append('<a href="#" class="hero__arrow hero__arrow--next">')
-//   .append({% include 'icon-arrow-left' %})
-//   .append('<span class="icon__fallback-text">{{ 'homepage.hero.next_slide' | t }}</span>')
-
 $.fn.appendChain = function() {
   var newEl = $.apply(this, arguments)
   this.append(newEl)
@@ -15,7 +6,7 @@ $.fn.appendChain = function() {
 
 var generateCarouselItem = function(idx) {
   var $el = $(this)
-  var arrows = $('.page-carousel-arrows').clone()
+  var arrows = $('#page-carousel-arrows').clone().removeAttr('style')
   var link = $el.find('a')
   var href = link.attr('href')
   var title = link.attr('title')
@@ -33,13 +24,20 @@ var generateCarouselItem = function(idx) {
     h1.text(title)
   }
   textContent.append(arrows)
-  return item.html()
+  return $('<div>').append(item).html()
 }
 
 $(function() {
   $('.page-carousel-content').each(function(idx) {
     var $el = $(this)
     $el.html($el.find('> p').map(generateCarouselItem).get().join(''))
+    // TODO: fix these so they work
+    $el.on('init', function(evt, obj) {
+      debugger
+      // TODO: obj.slideCount is 0 here - figure out why and fix.
+      var $arrows = $el.find('.hero__arrow')
+      theme.heroArrowsInit($arrows, evt, obj)
+    })
     $el.slick({
       accessibility  : true,
       arrows         : false, // this theme has custom arrows
@@ -48,5 +46,19 @@ $(function() {
       autoplay       : $el.data('autoplay'),
       autoplaySpeed  : $el.data('speed')
     })
+    // TODO: add this functionality:
+    /*
+    theme.cache.$heroImage.on('click', function() {
+      theme.cache.$hero.slick('slickNext');
+    });
+
+    theme.cache.$heroPause.on('click', function() {
+      if ($(this).hasClass('is-paused')) {
+        theme.heroPlay();
+      } else {
+        theme.heroPause();
+      }
+    });
+     */
   })
 })

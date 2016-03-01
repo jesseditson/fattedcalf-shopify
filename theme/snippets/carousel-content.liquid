@@ -9,8 +9,8 @@
       <span class="icon__fallback-text">{{ 'homepage.hero.play_slideshow' | t }}</span>
     </span>
   </button>
-  <div class="page-carousel-arrows" style="display:none;">
-    <div class="hero__arrows small--hide" aria-controls="Hero">
+  <div id="page-carousel-arrows" style="display:none;">
+    <div class="hero__arrows small--hide" aria-controls="PageCarousel">
       <a href="#" class="hero__arrow hero__arrow--prev">
         {% include 'icon-arrow-left' %}
         <span class="icon__fallback-text">{{ 'homepage.hero.previous_slide' | t }}</span>
@@ -21,7 +21,7 @@
       </a>
     </div>
   </div>
-  <div class="hero page-carousel-content" data-autoplay="true" data-speed="7000">
+  <div class="hero page-carousel-content" id="PageCarousel" data-autoplay="true" data-speed="7000">
     {{content}}
   </div>
 </div>

@@ -1373,7 +1373,7 @@ theme.heroInit = function () {
   }
 
   theme.cache.$hero.on('init', theme.heroA11y);
-  theme.cache.$hero.on('init', theme.heroArrowsInit);
+  theme.cache.$hero.on('init', theme.heroArrowsInit.bind(theme, theme.cache.$heroArrows));
 
   theme.cache.$hero.slick({
     accessibility  : true,
@@ -1432,11 +1432,11 @@ theme.heroA11y = function (evt, obj) {
   });
 };
 
-theme.heroArrowsInit = function (evt, obj) {
+theme.heroArrowsInit = function ($arrows, evt, obj) {
   // Slider is initialized. Setup custom arrows
   var count = obj.slideCount;
   var $slider = obj.$slider;
-  var $arrows = theme.cache.$heroArrows;
+  debugger
 
   if ($arrows.length && count > 1) {
     $arrows.on('click', function (evt) {
