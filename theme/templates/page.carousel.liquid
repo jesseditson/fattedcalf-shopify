@@ -1,0 +1,44 @@
+{% if settings.products_featured_collection != blank %}
+  {% if collections[settings.products_featured_collection].products_count != 0 %}
+    {% assign sidebar_enable = true %}
+  {% endif %}
+{% endif %}
+
+{% assign parts = page.content | split: '<p>[carousel]</p>' %}
+{% assign pageContent = '' %}
+{% assign carouselContent = '' %}
+{% for part in parts %}
+  {% unless part contains '<p>[/carousel]</p>' %}
+    {% assign pageContent = pageContent | append: part %}
+  {% else %}
+    {% assign carouselParts = part | split: '<p>[/carousel]</p>' %}
+    {% for block in carouselParts %}
+      {% if forloop.index == 1 %}
+      {% assign carouselContent = carouselContent | append: block %}
+      {% else %}
+      {% assign pageContent = pageContent | append: block %}
+      {% endif %}
+    {% endfor %}
+  {% endunless %}
+{% endfor %}
+
+<div class="page-carousel hero-wrapper">
+  {% include 'carousel-content' content: carouselContent %}
+</div>
+<div class="carousel-page-content">
+  <div class="grid">
+    <div class="grid__item{% if sidebar_enable %} medium-up--three-quarters large-up--four-fifths{% endif %}">
+      <div class="content-block content-block--large">
+        <h1 class="small--text-center">{{ page.title }}</h1>
+        <div class="rte rte--indented-images">
+          {{ pageContent }}
+        </div>
+      </div>
+    </div>
+    {% if sidebar_enable %}
+      <div class="grid__item medium-up--one-quarter large-up--one-fifth small--hide">
+        {% include 'featured-products' %}
+      </div>
+    {% endif %}
+  </div>
+</div>

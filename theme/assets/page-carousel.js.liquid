@@ -1,0 +1,52 @@
+
+// var arrows = $('<div class="hero__arrows small--hide" aria-controls="Hero">')
+// arrows.append('<a href="#" class="hero__arrow hero__arrow--prev">')
+//   .append({% include 'icon-arrow-left' %})
+//   .append('<span class="icon__fallback-text">{{ 'homepage.hero.previous_slide' | t }}</span>')
+// arrows.append('<a href="#" class="hero__arrow hero__arrow--next">')
+//   .append({% include 'icon-arrow-left' %})
+//   .append('<span class="icon__fallback-text">{{ 'homepage.hero.next_slide' | t }}</span>')
+
+$.fn.appendChain = function() {
+  var newEl = $.apply(this, arguments)
+  this.append(newEl)
+  return newEl
+}
+
+var generateCarouselItem = function(idx) {
+  var $el = $(this)
+  var arrows = $('.page-carousel-arrows').clone()
+  var link = $el.find('a')
+  var href = link.attr('href')
+  var title = link.attr('title')
+  var image = $el.find('img').attr('src')
+  if (!image) return ''
+  $el.empty()
+  var item = $('<div class="hero__slide">')
+  var img = item.appendChain(`<div class="hero__image hero__image--${idx}" data-image="${image}"></div>`).css({
+    'background-image': `url('${image}')`
+  })
+  var textContent = item.appendChain('<div class="hero__text-wrap">').appendChain('<div class="page-width">').appendChain('<div class="hero__text-content">')
+  if (title) {
+    var h1 = textContent.appendChain('<div class="hero__title-wrap">').appendChain('<h1 class="hero__title">')
+    if (href) h1 = h1.addClass('hero__title--has-link').appendChain(`<a href="${href}">`)
+    h1.text(title)
+  }
+  textContent.append(arrows)
+  return item.html()
+}
+
+$(function() {
+  $('.page-carousel-content').each(function(idx) {
+    var $el = $(this)
+    $el.html($el.find('> p').map(generateCarouselItem).get().join(''))
+    $el.slick({
+      accessibility  : true,
+      arrows         : false, // this theme has custom arrows
+      dots           : false,
+      draggable      : false,
+      autoplay       : $el.data('autoplay'),
+      autoplaySpeed  : $el.data('speed')
+    })
+  })
+})

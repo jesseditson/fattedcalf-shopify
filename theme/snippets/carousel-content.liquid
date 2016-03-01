@@ -1,0 +1,27 @@
+<div class="hero-wrapper">
+  <button type="button" class="visually-hidden hero__pause" aria-live="polite">
+    <span class="hero__pause-stop">
+      {% include 'icon-pause' %}
+      <span class="icon__fallback-text">{{ 'homepage.hero.pause_slideshow' | t }}</span>
+    </span>
+    <span class="hero__pause-play">
+      {% include 'icon-play' %}
+      <span class="icon__fallback-text">{{ 'homepage.hero.play_slideshow' | t }}</span>
+    </span>
+  </button>
+  <div class="page-carousel-arrows" style="display:none;">
+    <div class="hero__arrows small--hide" aria-controls="Hero">
+      <a href="#" class="hero__arrow hero__arrow--prev">
+        {% include 'icon-arrow-left' %}
+        <span class="icon__fallback-text">{{ 'homepage.hero.previous_slide' | t }}</span>
+      </a>
+      <a href="#" class="hero__arrow hero__arrow--next">
+        {% include 'icon-arrow-right' %}
+        <span class="icon__fallback-text">{{ 'homepage.hero.next_slide' | t }}</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero page-carousel-content" data-autoplay="true" data-speed="7000">
+    {{content}}
+  </div>
+</div>
